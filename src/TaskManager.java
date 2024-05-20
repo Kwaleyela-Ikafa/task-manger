@@ -11,7 +11,13 @@ public class TaskManager {
     }
 
     public void markTaskAsCompleted(Task task) {
-        task.setCompleted(true);
+        if (!task.isCompleted()) { // check if task is not already completed
+            task.setCompleted(true);
+            System.out.println("Task: " + task.getTitle() + " Marked as completed");
+        } else {
+            System.out.println("Task already complete");
+            return;
+        }
     }
 
     public void displayAllTasks() {
