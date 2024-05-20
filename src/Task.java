@@ -23,6 +23,9 @@ public class Task {
     }
 
     public void setTitle(String title) {
+        if (title.isBlank() || title == null) {
+            throw new IllegalArgumentException("Title cannot be null or blank");
+        }
         this.title = title;
     }
 
@@ -31,6 +34,9 @@ public class Task {
     }
 
     public void setDescription(String description) {
+        if (description.isBlank() || description == null) {
+            throw new IllegalArgumentException("Description cannot be null or blank");
+        }
         this.description = description;
     }
 
@@ -39,6 +45,9 @@ public class Task {
     }
 
     public void setDue_date(String due_date) {
+        if (due_date.isBlank() || due_date == null) {
+            throw new IllegalArgumentException("Due date cannot be null or blank");
+        }
         this.due_date = due_date;
     }
 
