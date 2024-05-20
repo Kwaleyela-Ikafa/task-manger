@@ -1,20 +1,27 @@
+import java.time.LocalDate;
+
+import enums.Priority;
+
 public class Task {
     private String title;
     private String description;
-    private String due_date;
+    private Priority priority;
+    private LocalDate dueDate;
     private Boolean completed;
 
-    public Task(String title, String description, String due_date) {
+    public Task(String title, String description, Priority priority, LocalDate dueDate) {
         setTitle(title);
         setDescription(description);
-        setDue_date(due_date);
+        setPriority(priority);
+        setdueDate(dueDate);
         this.completed = false;
     }
 
     public Task(Task source) {
         setTitle(source.title);
         setDescription(source.description);
-        setDue_date(source.due_date);
+        setPriority(source.priority);
+        setdueDate(source.dueDate);
     }
 
 
@@ -29,6 +36,19 @@ public class Task {
         this.title = title;
     }
 
+    public Priority getPriority() {
+        return this.priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+
+    public Boolean getCompleted() {
+        return this.completed;
+    }
+
+
     public String getDescription() {
         return this.description;
     }
@@ -40,15 +60,12 @@ public class Task {
         this.description = description;
     }
 
-    public String getDue_date() {
-        return this.due_date;
+    public LocalDate getDueDate() {
+        return this.dueDate;
     }
 
-    public void setDue_date(String due_date) {
-        if (due_date.isBlank() || due_date == null) {
-            throw new IllegalArgumentException("Due date cannot be null or blank");
-        }
-        this.due_date = due_date;
+    public void setdueDate(LocalDate date) {
+        this.dueDate = date;
     }
 
     public Boolean isCompleted() {
@@ -59,4 +76,14 @@ public class Task {
         this.completed = completed;
     }
 
+    @Override
+    public String toString() {
+        return "Task{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", dueDate=" + dueDate +
+                ", priority=" + priority +
+                ", completed=" + completed +
+                '}';
+    }
 }
