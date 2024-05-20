@@ -72,8 +72,8 @@ public class Task {
         return this.completed;
     }
 
-    public void setCompleted(Boolean completed) {
-        this.completed = completed;
+    public void markAsCompleted() {
+        this.completed = true;
     }
 
     @Override

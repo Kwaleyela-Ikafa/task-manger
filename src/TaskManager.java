@@ -7,40 +7,45 @@ public class TaskManager {
 
     public void addTask(Task task) {
         this.tasks.add(task);
-        System.out.println("Task '" + task.getTitle() + "' added to the task list.");
+        System.out.println("Task '" + task.getTitle() + "' added to the task manager.");
     }
 
-    public void markTaskAsCompleted(Task task) {
-        if (!task.isCompleted()) { // check if task is not already completed
-            task.setCompleted(true);
-            System.out.println("Task: " + task.getTitle() + " Marked as completed");
-        } else {
-            System.out.println("Task already complete");
-            return;
+    public void markTaskAsCompleted(String title) {
+        for (Task task : tasks) {
+            if (task.getTitle().equalsIgnoreCase(title)) {
+                if (!task.isCompleted()) {
+                    task.markAsCompleted();;
+                    System.out.println("Task '" + title + "' marked as completed.");
+                } else {
+                    System.out.println("Task '" + title + "' is already completed.");
+                }
+                return;
+            }
         }
+        System.out.println("Task '" + title + "' not found in the task manager.");
     }
 
     public void displayAllTasks() {
+        System.out.println("All Tasks:");
         for (Task task : tasks) {
-            System.out.println("All Tasks: ");
-            System.out.println("Task: " + task.getTitle() + "  " + task.getDescription() + " Due on: " + task.getDue_date());
+            System.out.println(task);
         }
     }
 
     public void displayIncompleteTasks() {
-        for(Task task : tasks) {
+        System.out.println("Incomplete Tasks:");
+        for (Task task : tasks) {
             if (!task.isCompleted()) {
-                System.out.println("Incomplete Tasks: ");
-                System.out.println("Task: " + task.getTitle() + "  " + task.getDescription() + " Due on: " + task.getDue_date());
+                System.out.println(task);
             }
         }
     }
 
     public void displayCompletedTasks() {
-        for(Task task : tasks) {
+        System.out.println("Completed Tasks:");
+        for (Task task : tasks) {
             if (task.isCompleted()) {
-                System.out.println("Complete Tasks: ");
-                System.out.println("Task: " + task.getTitle() + "  " + task.getDescription() + " Due on: " + task.getDue_date());
+                System.out.println(task);
             }
         }
     }
